@@ -20,6 +20,12 @@ export class HeroeComponent implements OnInit {
       console.log('Formulario no valido.');
       return;
     }
+    if (this.heroe.id) {
+      this.servicioHeroe.actualizarHeroe(this.heroe).subscribe(respuesta => {
+        console.log(respuesta);
+      });
+      return;
+    }
     this.servicioHeroe.crearHeroe(this.heroe).subscribe(respuesta => {
       console.log(respuesta);
     });

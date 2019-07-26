@@ -21,4 +21,13 @@ export class HeroesService {
         })
       );
   }
+
+  actualizarHeroe(heroe: HeroeModel) {
+    const heroeTemp = {
+      ...heroe
+    };
+    /* se borra el id para que no se guarde en firebase */
+    delete heroeTemp.id;
+    return this.http.put(`${this.url}/heroes/${heroe.id}.json`, heroeTemp);
+  }
 }
