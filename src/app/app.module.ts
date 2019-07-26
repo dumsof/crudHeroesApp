@@ -6,6 +6,10 @@ import { HeroeComponent } from './pages/heroe/heroe.component';
 import { HeroesComponent } from './pages/heroes/heroes.component';
 /* se importa el archivo de rutas */
 import { AppRoutingModule } from './app-routing.module';
+/* para el manejo del formulario */
+import { FormsModule } from "@angular/forms";
+/* manejo de peticiones http en los servicios */
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
