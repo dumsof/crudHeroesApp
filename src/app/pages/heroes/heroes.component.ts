@@ -14,12 +14,15 @@ import Swal from 'sweetalert2';
 export class HeroesComponent implements OnInit {
 
   heroes: HeroeModel[] = [];
+  cargando = false;
   constructor(private servicioHeroe: HeroesService) { }
 
   ngOnInit() {
+    this.cargando = true;
     this.servicioHeroe.getHeroes()
       .subscribe(respuesta => {
         this.heroes = respuesta;
+        this.cargando = false;
       });
   }
   borrarHeroe(heroe: HeroeModel, i: number) {
@@ -27,8 +30,8 @@ export class HeroesComponent implements OnInit {
       title: '¿Esta seguro?',
       text: `Esta seguro que desea borrar a ${heroe.nombre}`,
       type: 'question',
-      showConfirmButton:true,
-      showCancelButton:true
+      showConfirmButton: true,
+      showCancelButton: true
     }).then(confirmacion => {
       if (confirmacion.value) {
         /* borrar el elemento de la posicion de i, cuantos elementos 1 */
